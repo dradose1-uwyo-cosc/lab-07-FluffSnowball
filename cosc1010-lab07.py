@@ -1,12 +1,10 @@
-# Your Name Here
+# Ben Woolsey
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Submission Date: 10/29/2024
+# Lab 07
+# Lab Section: 11
+# Sources: https://www.w3schools.com/python/ref_string_replace.asp, https://www.w3schools.com/python/ref_string_split.asp
+# Help recieved from Lab TA for part 2 and "exit" on part 3
 
 
 # Prompt the user for an upper bound 
@@ -18,7 +16,18 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
-
+prompt = str(input("Declare an upper bound: "))
+if prompt.isdigit():
+    pass
+else:
+    print("Please enter a positive integer")
+    prompt = str(input("Declare an upper bound: "))
+    while prompt.isdigit() == False:
+        print("Please enter a positive integer")
+        prompt = str(input("Declare an upper bound: "))
+while int(prompt) > 0:
+    factorial = int(prompt) * int(factorial)
+    prompt = int(prompt) - 1
 print(f"The result of the factorial based on the given bound is {factorial}")
 
 print("*"*75)
@@ -38,7 +47,19 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
-
+response = ""
+while response.lower() != "exit":
+    response = str(input("Enter an integer, type 'exit' to quit"))
+    if response.lower() != "exit":
+        if response.isnumeric():
+            num_sum = int(num_sum) + int(response)
+        elif "-" in str(response):
+            response.replace("-","")
+            num_sum = int(num_sum) + int(response)
+        else:
+            while response.isdigit() == False:
+                print("Please enter an integer")
+                response = str(input("Enter an integer, type 'exit' to quit"))
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +80,27 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+entry = ""
+while entry.lower() != "exit":
+    entry = str(input("Enter an equation type 'exit' to quit: "))
+    if entry.lower() != "exit":
+        if "+" in str(entry):
+            new = str(entry).split("+")
+            result = int(new[0]) + int(new[1])
+            print(result)
+        elif "-" in str(entry):
+            new = str(entry).split("-")
+            result = int(new[0]) - int(new[1])
+            print(result)
+        elif "*" in str(entry):
+            new = str(entry).split("*")
+            result = int(new[0]) * int(new[1])
+            print(result)
+        elif "/" in str(entry):
+            new = str(entry).split("/")
+            result = int(new[0]) / int(new[1])
+            print(result)
+        elif "%" in str(entry):
+            new = str(entry).split("%")
+            result = int(new[0]) % int(new[1])
+            print(result)
